@@ -6,6 +6,7 @@ lazy val root = project
     .settings(
       scalaVersion := "2.13.0",
       scalacOptions += "-Ymacro-annotations",
+      organization := "com.nullhappens",
       name := "practical-fp",
       fork := true,
       addCompilerPlugin(Compiler.kindProjector),
