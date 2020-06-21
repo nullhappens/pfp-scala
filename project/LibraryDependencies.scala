@@ -2,7 +2,7 @@ import sbt._
 
 object LibraryDependencies {
 
-  val console4Cats = "dev.profunctor" %% "console4cats" % "0.8.1"
+  val console4cats = "dev.profunktor" %% "console4cats" % "0.8.1"
   val newtype = "io.estatico" %% "newtype" % "0.4.3"
 
   object Fs2 {
@@ -22,9 +22,9 @@ object LibraryDependencies {
   }
 
   object Derevo {
-    private val derevoVersion = "0.10.5"
-    val cats = "org.manakti" %% "derevo-cats" % derevoVersion
-    val catsTagless = "org.manakti" %% "derevo-cats-tagless" % derevoVersion
+    private val derevoVersion = "0.11.4"
+    val cats = "org.manatki" %% "derevo-cats" % derevoVersion
+    val catsTagless = "org.manatki" %% "derevo-cats-tagless" % derevoVersion
   }
 
   object Meow {
@@ -42,7 +42,7 @@ object LibraryDependencies {
   object Compiler {
     val kindProjector =
       ("org.typelevel" %% "kind-projector" % "0.11.0").cross(CrossVersion.full)
-    val contextApplied = "org.augustjune" % "context-applied" % "0.1.2"
+    val contextApplied = "org.augustjune" %% "context-applied" % "0.1.4"
   }
 
 }

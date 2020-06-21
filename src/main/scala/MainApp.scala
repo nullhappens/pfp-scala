@@ -1,3 +1,3 @@
-object MainApp extens App {
+object MainApp extends App {
   println("it works!")
 }
