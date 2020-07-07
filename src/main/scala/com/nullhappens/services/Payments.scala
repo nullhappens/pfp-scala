@@ -7,6 +7,9 @@ trait Payments[F[_]] {
   def process(payment: Payment): F[PaymentId]
 }
 
+//TODO: I added this here, the book doesnt have this
+final case class PaymentError(message: String) extends Exception
+
 case class Payment(id: UserId, total: Money, card: Card)
 case class Card(
     name: CardHolderName,

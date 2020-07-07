@@ -13,6 +13,8 @@ trait Orders[F[_]] {
     ): F[OrderId]
 }
 
+final case class OrderError(message: String) extends Exception
+
 case class Order(
     id: OrderId,
     pid: PaymentId,

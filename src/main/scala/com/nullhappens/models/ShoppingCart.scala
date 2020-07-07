@@ -10,5 +10,7 @@ trait ShoppingCart[F[_]] {
   def update(userId: UserId, cart: Cart): F[Unit]
 }
 
+final case object EmptyCartError extends Exception
+
 case class CartItem(item: Item, quantity: Quantity)
 case class CartTotal(items: List[CartItem], total: Money)
