@@ -4,7 +4,7 @@ import LibraryDependencies._
 lazy val root = project
     .in(file("."))
     .settings(
-      scalaVersion := "2.13.0",
+      scalaVersion := "2.13.3",
       scalacOptions += "-Ymacro-annotations",
       organization := "com.nullhappens",
       name := "practical-fp",
@@ -20,6 +20,15 @@ lazy val root = project
         log4j2.core,
         log4j2.api,
         log4j2.slf4j,
+        http4sJwtAuth,
+        Http4s.core,
+        Http4s.dsl,
+        Http4s.blazeServer,
+        Http4s.circe,
+        Circe.core,
+        Circe.parser,
+        Circe.generic,
+        Circe.refined,
         Cats.core,
         Cats.effect,
         Derevo.cats,

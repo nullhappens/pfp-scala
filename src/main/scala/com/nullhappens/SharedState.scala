@@ -5,12 +5,16 @@ import cats.effect.concurrent.Semaphore
 import cats.effect.implicits._
 import cats.implicits._
 import scala.concurrent.duration._
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import io.chrisdavenport.log4cats.Logger
 
 object SharedState extends IOApp {
 
+  implicit val unsafeLogger = Slf4jLogger.getLogger[IO]
+
   def someExpensiveTask: IO[Unit] =
     IO.sleep(1.second) >>
-      IO(println("expensive task")) >>
+      Logger[IO].debug("expensive task") >>
       someExpensiveTask
 
   def p1(sem: Semaphore[IO]): IO[Unit] =
