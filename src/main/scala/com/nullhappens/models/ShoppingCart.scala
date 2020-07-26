@@ -1,6 +1,7 @@
 package com.nullhappens.models
 
 import squants.market.Money
+import scala.util.control.NoStackTrace
 
 trait ShoppingCart[F[_]] {
   def add(userId: UserId, itemId: ItemId, quantity: Quantity): F[Unit]
@@ -10,7 +11,8 @@ trait ShoppingCart[F[_]] {
   def update(userId: UserId, cart: Cart): F[Unit]
 }
 
-final case object EmptyCartError extends Exception
+final case object EmptyCartError extends NoStackTrace
+final case class CartNotFound(userId: UserId) extends NoStackTrace
 
 case class CartItem(item: Item, quantity: Quantity)
 case class CartTotal(items: List[CartItem], total: Money)

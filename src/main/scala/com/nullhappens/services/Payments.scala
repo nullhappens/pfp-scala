@@ -2,13 +2,13 @@ package com.nullhappens.services
 
 import com.nullhappens.models._
 import squants.market.Money
+import scala.util.control.NoStackTrace
 
 trait Payments[F[_]] {
   def process(payment: Payment): F[PaymentId]
 }
 
-//TODO: I added this here, the book doesnt have this
-final case class PaymentError(message: String) extends Exception
+final case class PaymentError(message: String) extends NoStackTrace
 
 case class Payment(id: UserId, total: Money, card: Card)
 case class Card(

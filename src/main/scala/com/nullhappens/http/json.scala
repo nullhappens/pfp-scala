@@ -10,6 +10,7 @@ import com.nullhappens.models._
 import squants.market._
 import io.estatico.newtype.Coercible
 import io.estatico.newtype.ops._
+import com.nullhappens.services.Card
 
 object json extends JsonCodecs {
   implicit def deriveEntityEncoder[
@@ -65,8 +66,8 @@ private[http] trait JsonCodecs {
 
   implicit val orderEncoder: Encoder[Order] = deriveEncoder[Order]
 
-  // implicit val cardDecoder: Decoder[Card] = deriveDecoder[Card]
-  // implicit val cardEncoder: Encoder[Card] = deriveEncoder[Card]
+  implicit val cardDecoder: Decoder[Card] = deriveDecoder[Card]
+  implicit val cardEncoder: Encoder[Card] = deriveEncoder[Card]
 
   implicit val tokenEncoder: Encoder[JwtToken] =
     Encoder.forProduct1("access_token")(_.value)
