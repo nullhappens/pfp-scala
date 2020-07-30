@@ -2,18 +2,17 @@ package com.nullhappens.http.routes.secured
 
 import cats.Defer
 import cats.implicits._
-import com.nullhappens.effect._
-import com.nullhappens.models._
-import com.nullhappens.http.auth.users.CommonUser
-import com.nullhappens.services.Card
-import com.nullhappens.services.Checkout
-import com.nullhappens.http.json._
-import com.nullhappens.services.PaymentError
-import com.nullhappens.http.refined._
+import org.http4s._
 import org.http4s.circe.JsonDecoder
 import org.http4s.dsl._
-import org.http4s._
 import org.http4s.server._
+
+import com.nullhappens.effect._
+import com.nullhappens.http.auth.users.CommonUser
+import com.nullhappens.http.json._
+import com.nullhappens.http.refined._
+import com.nullhappens.models._
+import com.nullhappens.services.{Card, Checkout, PaymentError}
 
 final class CheckoutRoutes[F[_]: Defer: JsonDecoder: MonadThrow](
     checkoutService: Checkout[F])

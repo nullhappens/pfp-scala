@@ -1,10 +1,9 @@
 package com.nullhappens
 
+import cats.effect.{ExitCode, IO, IOApp}
 import cats.implicits._
-import cats.effect.IOApp
-import cats.effect.{ ExitCode, IO }
-import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import io.chrisdavenport.log4cats.Logger
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 
 object SecondMainApp extends IOApp {
 

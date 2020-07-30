@@ -1,8 +1,10 @@
 package com.nullhappens.services
 
-import com.nullhappens.models._
-import squants.market.Money
 import scala.util.control.NoStackTrace
+
+import squants.market.Money
+
+import com.nullhappens.models._
 
 trait Payments[F[_]] {
   def process(payment: Payment): F[PaymentId]

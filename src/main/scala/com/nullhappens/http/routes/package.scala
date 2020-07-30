@@ -1,7 +1,8 @@
 package com.nullhappens.http
 
-import io.estatico.newtype.macros.newtype
 import eu.timepit.refined.types.string.NonEmptyString
+import io.estatico.newtype.macros.newtype
+
 import com.nullhappens.models._
 
 package object routes {

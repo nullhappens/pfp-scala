@@ -1,12 +1,12 @@
 package com.nullhappens.http.routes
 
-import cats.Defer
-import cats.Monad
-import com.nullhappens.models.Brands
+import cats.{Defer, Monad}
+import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
-import org.http4s.HttpRoutes
+
 import com.nullhappens.http.json._
+import com.nullhappens.models.Brands
 
 final class BrandRoutes[F[_]: Defer: Monad](brands: Brands[F])
   extends Http4sDsl[F] {

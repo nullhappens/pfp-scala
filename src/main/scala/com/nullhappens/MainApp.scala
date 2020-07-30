@@ -1,7 +1,7 @@
-import cats.implicits._
 import cats.effect._
-import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import cats.implicits._
 import io.chrisdavenport.log4cats.Logger
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 
 object MainApp extends IOApp {
 

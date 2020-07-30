@@ -1,7 +1,8 @@
 package com.nullhappens
 
-import io.estatico.newtype.macros.newtype
 import java.{ util => ju }
+
+import io.estatico.newtype.macros.newtype
 
 package object models {
   @newtype case class BrandId(value: ju.UUID)

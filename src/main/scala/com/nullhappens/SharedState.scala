@@ -1,12 +1,13 @@
 package com.nullhappens
 
+import scala.concurrent.duration._
+
 import cats.effect._
 import cats.effect.concurrent.Semaphore
 import cats.effect.implicits._
 import cats.implicits._
-import scala.concurrent.duration._
-import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import io.chrisdavenport.log4cats.Logger
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 
 object SharedState extends IOApp {
 

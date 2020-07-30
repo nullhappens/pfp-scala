@@ -1,6 +1,9 @@
 import sbt._
 import LibraryDependencies._
 
+
+ThisBuild / scalafixDependencies += scalafixOrganizeImports
+
 lazy val root = project
     .in(file("."))
     .settings(

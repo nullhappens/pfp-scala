@@ -1,7 +1,6 @@
 package com.nullhappens
 
-import cats.MonadError
-import cats.ApplicativeError
+import cats.{ApplicativeError, MonadError}
 
 package object effect {
 

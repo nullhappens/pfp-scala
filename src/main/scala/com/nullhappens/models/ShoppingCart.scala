@@ -1,7 +1,8 @@
 package com.nullhappens.models
 
-import squants.market.Money
 import scala.util.control.NoStackTrace
+
+import squants.market.Money
 
 trait ShoppingCart[F[_]] {
   def add(userId: UserId, itemId: ItemId, quantity: Quantity): F[Unit]

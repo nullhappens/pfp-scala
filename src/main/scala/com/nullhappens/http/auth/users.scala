@@ -1,7 +1,8 @@
 package com.nullhappens.http.auth
 
-import io.estatico.newtype.macros.newtype
 import dev.profunktor.auth.jwt.JwtSymmetricAuth
+import io.estatico.newtype.macros.newtype
+
 import com.nullhappens.models._
 
 object users {

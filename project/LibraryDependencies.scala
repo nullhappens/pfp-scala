@@ -8,6 +8,7 @@ object LibraryDependencies {
   val catsRetry = "com.github.cb372" %% "cats-retry" % "1.1.1"
   val log4CatsSlf4j = "io.chrisdavenport" %% "log4cats-slf4j" % "1.1.1"
   val http4sJwtAuth = "dev.profunktor" %% "http4s-jwt-auth" % "0.0.5"
+  val scalafixOrganizeImports = "com.github.liancheng" %% "organize-imports" % "0.4.0"
 
   object log4j2 {
     private val log4j2Version = "2.13.3"

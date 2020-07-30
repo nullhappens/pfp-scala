@@ -2,14 +2,15 @@ package com.nullhappens.http.routes
 
 import cats._
 import cats.implicits._
-import org.http4s.dsl.Http4sDsl
 import org.http4s._
+import org.http4s.circe._
+import org.http4s.dsl.Http4sDsl
 import org.http4s.dsl.impl._
 import org.http4s.server._
-import org.http4s.circe._
-import com.nullhappens.models._
+
 import com.nullhappens.http.auth.users._
 import com.nullhappens.http.json._
+import com.nullhappens.models._
 
 final class CartRoutes[F[_]: Defer: JsonDecoder: Monad](
     shoppingCart: ShoppingCart[F])
@@ -25,13 +26,10 @@ final class CartRoutes[F[_]: Defer: JsonDecoder: Monad](
         ar.req
           .asJsonDecode[Cart]
           .flatMap { cart =>
-            cart.items
-              .map {
-                case (id, quantity) =>
-                  shoppingCart.add(user.value.id, id, quantity)
-              }
-              .toList
-              .sequence *> Created()
+            cart.items.toList.traverse {
+              case (id, quantity) =>
+                shoppingCart.add(user.value.id, id, quantity)
+            } *> Created()
           }
       case ar @ PUT -> Root as user =>
         ar.req.asJsonDecode[Cart].flatMap { cart =>

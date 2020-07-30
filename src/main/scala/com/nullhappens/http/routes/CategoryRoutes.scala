@@ -1,14 +1,14 @@
 package com.nullhappens.http.routes
 
-import cats.implicits._
 import cats.effect.implicits._
-import cats.Defer
-import cats.Monad
-import org.http4s.dsl.Http4sDsl
-import com.nullhappens.models.Categories
+import cats.implicits._
+import cats.{Defer, Monad}
 import org.http4s.HttpRoutes
+import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
+
 import com.nullhappens.http.json._
+import com.nullhappens.models.Categories
 
 final class CategoryRoutes[F[_]: Defer: Monad](categories: Categories[F])
   extends Http4sDsl[F] {

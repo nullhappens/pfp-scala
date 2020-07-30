@@ -1,12 +1,11 @@
 package com.nullhappens.http
 
 import cats.implicits._
-import org.http4s._
 import eu.timepit.refined._
-import eu.timepit.refined.api.Validate
-import eu.timepit.refined.api.Refined
+import eu.timepit.refined.api.{Refined, Validate}
 import io.estatico.newtype.Coercible
 import io.estatico.newtype.ops._
+import org.http4s._
 
 object params {
   implicit def coercibleQueryParamDecoder[

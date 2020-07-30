@@ -1,9 +1,10 @@
 package com.nullhappens.effect
 
 import scala.concurrent.duration.FiniteDuration
-import cats.implicits._
+
 import cats.effect._
 import cats.effect.implicits._
+import cats.implicits._
 
 trait Background[F[_]] {
   def schedule[A](fa: F[A], duration: FiniteDuration): F[Unit]

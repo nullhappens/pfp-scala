@@ -1,20 +1,18 @@
 package com.nullhappens.services
 
-import cats.implicits._
-import cats.Monad
-import cats.MonadError
-import retry.RetryDetails
-import retry.RetryDetails.GivingUp
-import retry.RetryDetails.WillDelayAndRetry
-import io.chrisdavenport.log4cats.Logger
-import retry.RetryPolicies._
-import retry._
 import scala.concurrent.duration._
+
+import cats.effect.{Concurrent, Timer}
+import cats.implicits._
+import cats.{Monad, MonadError}
+import io.chrisdavenport.log4cats.Logger
+import retry.RetryDetails.{GivingUp, WillDelayAndRetry}
+import retry.RetryPolicies._
+import retry.{RetryDetails, _}
 import squants.market.Money
-import com.nullhappens.models._
+
 import com.nullhappens.effect.Background
-import cats.effect.Concurrent
-import cats.effect.Timer
+import com.nullhappens.models._
 
 final class Checkout[F[_]: Background: Logger: MonadThrow: Timer](
     payments: Payments[F],

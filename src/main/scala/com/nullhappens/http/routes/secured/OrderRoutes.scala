@@ -1,13 +1,14 @@
 package com.nullhappens.http.routes.secured
 
 import cats._
-import com.nullhappens.models._
-import org.http4s.dsl._
 import org.http4s._
-import com.nullhappens.http.auth.users.CommonUser
-import com.nullhappens.http.json._
+import org.http4s.dsl._
 import org.http4s.dsl.impl._
 import org.http4s.server._
+
+import com.nullhappens.http.auth.users.CommonUser
+import com.nullhappens.http.json._
+import com.nullhappens.models._
 
 final class OrderRoutes[F[_]: Defer: Monad](orders: Orders[F])
   extends Http4sDsl[F] {

@@ -4,12 +4,14 @@ import cats.Applicative
 import io.circe._
 import io.circe.generic.semiauto._
 import io.circe.refined._
-import org.http4s._
-import org.http4s.circe._
-import com.nullhappens.models._
-import squants.market._
 import io.estatico.newtype.Coercible
 import io.estatico.newtype.ops._
+import org.http4s._
+import org.http4s.circe._
+import squants.market._
+
+import com.nullhappens.models._
+import com.nullhappens.models.auth._
 import com.nullhappens.services.Card
 
 object json extends JsonCodecs {
@@ -88,5 +90,5 @@ private[http] trait JsonCodecs {
   // implicit val createUserDecoder: Decoder[CreateUser] =
   //   deriveDecoder[CreateUser]
   //
-  // implicit val loginUserDecoder: Decoder[LoginUser] = deriveDecoder[LoginUser]
+  implicit val loginUserDecoder: Decoder[LoginUser] = deriveDecoder[LoginUser]
 }
