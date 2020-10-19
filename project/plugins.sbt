@@ -1,4 +1,3 @@
-
 ivyLoggingLevel := UpdateLogging.Quiet
 scalacOptions in Compile ++= Seq("-feature", "-deprecation")
 

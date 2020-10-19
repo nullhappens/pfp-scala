@@ -1,6 +1,6 @@
 package com.nullhappens.http.routes
 
-import cats.{Defer, Monad}
+import cats.{ Defer, Monad }
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router

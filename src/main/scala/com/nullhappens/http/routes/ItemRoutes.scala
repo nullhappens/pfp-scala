@@ -1,6 +1,6 @@
 package com.nullhappens.http.routes
 
-import cats.{Defer, Monad}
+import cats.{ Defer, Monad }
 import eu.timepit.refined.auto._
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
@@ -8,7 +8,7 @@ import org.http4s.server.Router
 
 import com.nullhappens.http.json._
 import com.nullhappens.http.params._
-import com.nullhappens.models.Items
+import com.nullhappens.models._
 
 final class ItemRoutes[F[_]: Defer: Monad](items: Items[F])
   extends Http4sDsl[F] {
@@ -26,4 +26,20 @@ final class ItemRoutes[F[_]: Defer: Monad](items: Items[F])
   val routes: HttpRoutes[F] = Router(
     prefixPath -> httpRoutes
   )
+}
+
+final case class CreateItemParam(
+    name: ItemNameParam,
+    description: ItemDescriptionParam,
+    price: PriceParam,
+    brandId: BrandId,
+    categoryId: CategoryId) {
+  def toDomain: CreateItem =
+    CreateItem(
+      name.toDomain,
+      description.toDomain,
+      price.toDomain,
+      brandId,
+      categoryId
+    )
 }

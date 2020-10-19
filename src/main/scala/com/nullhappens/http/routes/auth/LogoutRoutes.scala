@@ -4,8 +4,8 @@ import cats._
 import cats.implicits._
 import dev.profunktor.auth.AuthHeaders
 import org.http4s.dsl.Http4sDsl
-import org.http4s.server.{AuthMiddleware, Router}
-import org.http4s.{AuthedRoutes, HttpRoutes}
+import org.http4s.server.{ AuthMiddleware, Router }
+import org.http4s.{ AuthedRoutes, HttpRoutes }
 
 import com.nullhappens.http.auth.users.CommonUser
 import com.nullhappens.models.JwtToken

@@ -22,7 +22,7 @@ case class CreateItem(
     name: ItemName,
     description: ItemDescription,
     price: Money,
-    brand: Brand,
-    category: Category)
+    brandId: BrandId,
+    categoryId: CategoryId)
 
 case class UpdateItem(id: ItemId, price: Money)

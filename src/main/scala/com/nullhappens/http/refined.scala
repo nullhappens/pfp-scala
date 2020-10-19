@@ -4,7 +4,7 @@ import cats.implicits._
 import io.circe._
 import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
-import org.http4s.{Request, Response}
+import org.http4s.{ Request, Response }
 
 import com.nullhappens.effect.MonadThrow
 

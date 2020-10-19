@@ -10,8 +10,11 @@ import org.http4s._
 import org.http4s.circe._
 import squants.market._
 
+import com.nullhappens.http.auth._
+import com.nullhappens.http.auth.User
+import com.nullhappens.http.routes.BrandParam
+import com.nullhappens.http.routes.CategoryParam
 import com.nullhappens.models._
-import com.nullhappens.models.auth._
 import com.nullhappens.services.Card
 
 object json extends JsonCodecs {
@@ -56,10 +59,17 @@ private[http] trait JsonCodecs {
   implicit val itemDecoder: Decoder[Item] = deriveDecoder[Item]
   implicit val itemEncoder: Encoder[Item] = deriveEncoder[Item]
 
-  // implicit val createItemDecoder: Decoder[CreateItemParam] =
-  //   deriveDecoder[CreateItemParam]
-  // implicit val updateItemDecoder: Decoder[UpdateItemParam] =
-  //   deriveDecoder[UpdateItemParam]
+  implicit val brandParamDecoder: Decoder[BrandParam] =
+    Decoder.forProduct1("name")(BrandParam.apply)
+
+  implicit val categoryParamDecoder: Decoder[CategoryParam] =
+    Decoder.forProduct1("name")(CategoryParam.apply)
+
+  implicit val createItemDecoder: Decoder[CreateItemParam] =
+    deriveDecoder[CreateItemParam]
+
+  implicit val updateItemDecoder: Decoder[UpdateItemParam] =
+    deriveDecoder[UpdateItemParam]
 
   implicit val cartItemDecoder: Decoder[CartItem] = deriveDecoder[CartItem]
   implicit val cartItemEncoder: Encoder[CartItem] = deriveEncoder[CartItem]
@@ -87,8 +97,8 @@ private[http] trait JsonCodecs {
 
   // implicit val appStatusEncoder: Encoder[AppStatus] = deriveEncoder[AppStatus]
 
-  // implicit val createUserDecoder: Decoder[CreateUser] =
-  //   deriveDecoder[CreateUser]
-  //
+  implicit val createUserDecoder: Decoder[CreateUser] =
+    deriveDecoder[CreateUser]
+
   implicit val loginUserDecoder: Decoder[LoginUser] = deriveDecoder[LoginUser]
 }

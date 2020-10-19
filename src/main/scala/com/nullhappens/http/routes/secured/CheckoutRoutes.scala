@@ -12,7 +12,7 @@ import com.nullhappens.http.auth.users.CommonUser
 import com.nullhappens.http.json._
 import com.nullhappens.http.refined._
 import com.nullhappens.models._
-import com.nullhappens.services.{Card, Checkout, PaymentError}
+import com.nullhappens.services.{ Card, Checkout, PaymentError }
 
 final class CheckoutRoutes[F[_]: Defer: JsonDecoder: MonadThrow](
     checkoutService: Checkout[F])
