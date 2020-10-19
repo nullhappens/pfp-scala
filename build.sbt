@@ -31,6 +31,7 @@ lazy val root = project
       Http4s.core,
       Http4s.dsl,
       Http4s.blazeServer,
+      Http4s.blazeClient,
       Http4s.circe,
       Circe.core,
       Circe.parser,

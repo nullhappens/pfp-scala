@@ -16,6 +16,7 @@ import com.nullhappens.http.routes.BrandParam
 import com.nullhappens.http.routes.CategoryParam
 import com.nullhappens.models._
 import com.nullhappens.services.Card
+import com.nullhappens.services.Payment
 
 object json extends JsonCodecs {
   implicit def deriveEntityEncoder[
@@ -93,7 +94,7 @@ private[http] trait JsonCodecs {
   implicit val userDecoder: Decoder[User] = deriveDecoder[User]
   implicit val userEncoder: Encoder[User] = deriveEncoder[User]
 
-  // implicit val paymentEncoder: Encoder[Payment] = deriveEncoder[Payment]
+  implicit val paymentEncoder: Encoder[Payment] = deriveEncoder[Payment]
 
   // implicit val appStatusEncoder: Encoder[AppStatus] = deriveEncoder[AppStatus]
 

@@ -1,6 +1,7 @@
 package com.nullhappens
 
 import cats.{ ApplicativeError, MonadError }
+import cats.effect.Bracket
 
 package object effect {
 
@@ -15,6 +16,12 @@ package object effect {
 
   object MonadThrow {
     def apply[F[_]](implicit ev: MonadError[F, Throwable]): MonadThrow[F] = ev
+  }
+
+  type BracketThrow[F[_]] = Bracket[F, Throwable]
+
+  object BracketThrow {
+    def apply[F[_]](implicit ev: Bracket[F, Throwable]): BracketThrow[F] = ev
   }
 
 }
