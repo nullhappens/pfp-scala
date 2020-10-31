@@ -46,6 +46,7 @@ lazy val root = project
       Meow.effects,
       Refined.core,
       Monocle.core,
-      Monocle.`macro`
+      Monocle.`macro`,
+      Skunk.core
     )
   )

@@ -3,7 +3,6 @@ package com.nullhappens.http.routes.secured
 import cats._
 import org.http4s._
 import org.http4s.dsl._
-import org.http4s.dsl.impl._
 import org.http4s.server._
 
 import com.nullhappens.http.auth.users.CommonUser

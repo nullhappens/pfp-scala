@@ -1,19 +1,16 @@
 package com.nullhappens.http.clients
 
 import cats.implicits._
+import org.http4s.Method._
 import org.http4s._
-import org.http4s.circe._
-import org.http4s.circe.JsonDecoder
+import org.http4s.circe.{JsonDecoder, _}
 import org.http4s.client._
 import org.http4s.client.dsl.Http4sClientDsl
-import org.http4s.dsl._
-import org.http4s.Method._
 
 import com.nullhappens.effect._
 import com.nullhappens.http.json._
 import com.nullhappens.models.PaymentId
-import com.nullhappens.services.Payment
-import com.nullhappens.services.PaymentError
+import com.nullhappens.services.{Payment, PaymentError}
 
 trait PaymentClient[F[_]] {
   def process(payment: Payment): F[PaymentId]

@@ -4,7 +4,6 @@ import scala.concurrent.duration._
 
 import cats.effect._
 import cats.effect.concurrent.Semaphore
-import cats.effect.implicits._
 import cats.implicits._
 import io.chrisdavenport.log4cats.Logger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger

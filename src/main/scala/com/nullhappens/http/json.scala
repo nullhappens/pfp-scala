@@ -10,13 +10,10 @@ import org.http4s._
 import org.http4s.circe._
 import squants.market._
 
-import com.nullhappens.http.auth._
-import com.nullhappens.http.auth.User
-import com.nullhappens.http.routes.BrandParam
-import com.nullhappens.http.routes.CategoryParam
+import com.nullhappens.http.auth.{User, _}
+import com.nullhappens.http.routes.{BrandParam, CategoryParam}
 import com.nullhappens.models._
-import com.nullhappens.services.Card
-import com.nullhappens.services.Payment
+import com.nullhappens.services.{Card, Payment}
 
 object json extends JsonCodecs {
   implicit def deriveEntityEncoder[

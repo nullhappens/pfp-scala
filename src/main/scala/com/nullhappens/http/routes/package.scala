@@ -1,20 +1,15 @@
 package com.nullhappens.http
 
+import java.{ util => ju }
+
 import eu.timepit.refined.api.Refined
-import eu.timepit.refined.string.ValidBigDecimal
+import eu.timepit.refined.string.{Uuid, ValidBigDecimal}
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
-import squants.market.Price
+import squants.market.{Money, USD}
 
-import com.nullhappens.http.routes.ItemDescriptionParam
-import com.nullhappens.http.routes.ItemNameParam
-import com.nullhappens.http.routes.PriceParam
+import com.nullhappens.http.routes.{ItemDescriptionParam, ItemIdParam, ItemNameParam, PriceParam}
 import com.nullhappens.models._
-import squants.market.USD
-import squants.market.Money
-import java.{ util => ju }
-import eu.timepit.refined.string.Uuid
-import com.nullhappens.http.routes.ItemIdParam
 
 package object routes {
   @newtype case class BrandParam(value: NonEmptyString) {

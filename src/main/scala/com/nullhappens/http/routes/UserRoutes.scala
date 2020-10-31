@@ -2,18 +2,16 @@ package com.nullhappens.http.routes
 
 import cats.Defer
 import cats.implicits._
+import org.http4s.HttpRoutes
 import org.http4s.circe.JsonDecoder
 import org.http4s.dsl.Http4sDsl
-import org.http4s.HttpRoutes
+import org.http4s.server.Router
 
 import com.nullhappens.effect.MonadThrow
-import com.nullhappens.http.refined._
-import com.nullhappens.models._
-import com.nullhappens.services.Auth
+import com.nullhappens.http.auth.{CreateUser, _}
 import com.nullhappens.http.json._
-import com.nullhappens.http.auth._
-import com.nullhappens.http.auth.CreateUser
-import org.http4s.server.Router
+import com.nullhappens.http.refined._
+import com.nullhappens.services.Auth
 
 final class UserRoutes[F[_]: Defer: JsonDecoder: MonadThrow](auth: Auth[F])
   extends Http4sDsl[F] {

@@ -74,4 +74,9 @@ object LibraryDependencies {
     val contextApplied = "org.augustjune" %% "context-applied" % "0.1.4"
   }
 
+  object Skunk {
+    private val skunkVersion = "0.0.21"
+    val core = "org.tpolecat" %% "skunk-core" % skunkVersion
+  }
+
 }

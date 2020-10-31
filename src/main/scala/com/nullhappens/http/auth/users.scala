@@ -6,8 +6,7 @@ import dev.profunktor.auth.jwt.JwtSymmetricAuth
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
-import com.nullhappens.http.auth.users.PasswordParam
-import com.nullhappens.http.auth.users.UserNameParam
+import com.nullhappens.http.auth.users.{PasswordParam, UserNameParam}
 import com.nullhappens.models._
 
 object users {

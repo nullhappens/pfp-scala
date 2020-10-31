@@ -1,23 +1,16 @@
 package com.nullhappens.http.routes.admin
 
 import cats.Defer
-import cats.implicits._
-import org.http4s.AuthedRoutes
 import org.http4s.circe.JsonDecoder
 import org.http4s.dsl.Http4sDsl
-import org.http4s.dsl.impl._
-import org.http4s.HttpRoutes
-import org.http4s.server.AuthMiddleware
-import org.http4s.server.Router
+import org.http4s.server.{AuthMiddleware, Router}
+import org.http4s.{AuthedRoutes, HttpRoutes}
 
 import com.nullhappens.effect.MonadThrow
 import com.nullhappens.http.auth.users.AdminUser
 import com.nullhappens.http.json._
 import com.nullhappens.http.refined._
-import com.nullhappens.http.routes.BrandParam
-import com.nullhappens.http.CreateItemParam
-import com.nullhappens.http.UpdateItemParam
-import com.nullhappens.models.Brands
+import com.nullhappens.http.{CreateItemParam, UpdateItemParam}
 import com.nullhappens.models.Items
 
 final class AdminItemRoutes[F[_]: Defer: JsonDecoder: MonadThrow](

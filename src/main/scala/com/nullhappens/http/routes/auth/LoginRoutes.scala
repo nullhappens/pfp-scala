@@ -8,9 +8,9 @@ import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
 
 import com.nullhappens.effect.MonadThrow
+import com.nullhappens.http.auth._
 import com.nullhappens.http.json._
 import com.nullhappens.http.refined._
-import com.nullhappens.http.auth._
 import com.nullhappens.services.Auth
 
 final class LoginRoutes[F[_]: Defer: JsonDecoder: MonadThrow](auth: Auth[F])
