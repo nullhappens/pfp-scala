@@ -3,6 +3,7 @@ package com.nullhappens
 import java.{ util => ju }
 
 import io.estatico.newtype.macros.newtype
+import scala.concurrent.duration.FiniteDuration
 
 package object models {
   @newtype case class BrandId(value: ju.UUID)
@@ -26,4 +27,5 @@ package object models {
   @newtype case class CardExpiration(value: Int)
   @newtype case class CVV(value: Int)
   @newtype case class EncryptedPassword(value: String)
+  @newtype case class ShoppingCartExpiration(value: FiniteDuration)
 }

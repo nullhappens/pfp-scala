@@ -48,6 +48,10 @@ lazy val root = project
       Monocle.core,
       Monocle.`macro`,
       Skunk.core,
-      Skunk.circe
+      Skunk.circe,
+      Redis4Cats.core,
+      Redis4Cats.effects,
+      Redis4Cats.streams,
+      Redis4Cats.log4cats
     )
   )

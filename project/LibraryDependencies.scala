@@ -80,4 +80,12 @@ object LibraryDependencies {
     val circe = "org.tpolecat" %% "skunk-circe" % skunkVersion
   }
 
+  object Redis4Cats {
+    private val redis4CatsVersion = "0.10.3"
+    val core = "dev.profunktor" %% "redis4cats-core" % redis4CatsVersion
+    val effects = "dev.profunktor" %% "redis4cats-effects" % redis4CatsVersion
+    val streams = "dev.profunktor" %% "redis4cats-streams" % redis4CatsVersion
+    val log4cats = "dev.profunktor" %% "redis4cats-log4cats" % redis4CatsVersion
+  }
+
 }
