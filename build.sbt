@@ -47,6 +47,7 @@ lazy val root = project
       Refined.core,
       Monocle.core,
       Monocle.`macro`,
-      Skunk.core
+      Skunk.core,
+      Skunk.circe
     )
   )

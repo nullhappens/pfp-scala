@@ -25,4 +25,5 @@ package object models {
   @newtype case class CardNumber(value: Long)
   @newtype case class CardExpiration(value: Int)
   @newtype case class CVV(value: Int)
+  @newtype case class EncryptedPassword(value: String)
 }

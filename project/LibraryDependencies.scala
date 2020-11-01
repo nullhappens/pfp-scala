@@ -77,6 +77,7 @@ object LibraryDependencies {
   object Skunk {
     private val skunkVersion = "0.0.21"
     val core = "org.tpolecat" %% "skunk-core" % skunkVersion
+    val circe = "org.tpolecat" %% "skunk-circe" % skunkVersion
   }
 
 }

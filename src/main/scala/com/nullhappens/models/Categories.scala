@@ -1,12 +1,12 @@
 package com.nullhappens.models
 
-import cats.effect.{Resource, Sync}
+import cats.effect.{ Resource, Sync }
 import cats.implicits._
 import skunk._
 import skunk.codec.all._
 import skunk.implicits._
 
-import com.nullhappens.effect.{BracketThrow, GenUUID}
+import com.nullhappens.effect.{ BracketThrow, GenUUID }
 import com.nullhappens.models.skunkx._
 
 trait Categories[F[_]] {
@@ -16,7 +16,7 @@ trait Categories[F[_]] {
 
 case class Category(uuid: CategoryId, name: CategoryName)
 
-final class LiveCategories[F[_]: BracketThrow: GenUUID] private (
+private final class LiveCategories[F[_]: BracketThrow: GenUUID] private (
     sessionPool: Resource[F, Session[F]])
   extends Categories[F] {
   import CategoryQueries._

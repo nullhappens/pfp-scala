@@ -1,6 +1,7 @@
 package com.nullhappens.services
 
 import com.nullhappens.models._
+import com.nullhappens.http.auth.User
 
 trait Auth[F[_]] {
   def findUser(token: JwtToken): F[Option[User]]
