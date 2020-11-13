@@ -1,21 +1,63 @@
 package com.nullhappens.models
 
-import skunk._
+import cats.effect.Resource
+import cats.effect.Sync
+import cats.Functor
 import cats.implicits._
-import skunk.implicits._
+import dev.profunktor.redis4cats.RedisCommands
+import io.circe.parser.decode
+import pdi.jwt.JwtClaim
+import skunk._
 import skunk.codec.all._
-import com.nullhappens.models.skunkx._
+import skunk.implicits._
+
 import com.nullhappens.effect.BracketThrow
 import com.nullhappens.effect.GenUUID
-import com.nullhappens.security.Crypto
 import com.nullhappens.http.auth.User
-import cats.effect.Resource
 import com.nullhappens.http.auth.UserNameInUse
-import cats.effect.Sync
+import com.nullhappens.http.auth.users
+import com.nullhappens.http.auth.users.CommonUser
+import com.nullhappens.models.skunkx._
+import com.nullhappens.security.Crypto
+import com.nullhappens.http.json._
+import com.nullhappens.http.auth.users.AdminUser
+import cats.Applicative
 
 trait Users[F[_]] {
   def find(username: UserName, password: Password): F[Option[User]]
   def create(username: UserName, password: Password): F[UserId]
+}
+
+trait UsersAuth[F[_], A] {
+  def findUser(token: JwtToken)(claim: JwtClaim): F[Option[A]]
+}
+
+private final class LiveAdminAuth[F[_]: Applicative](
+    adminToken: JwtToken,
+    adminUser: AdminUser)
+  extends UsersAuth[F, AdminUser] {
+  def findUser(
+      token: com.nullhappens.models.JwtToken
+    )(claim: JwtClaim
+    ): F[Option[users.AdminUser]] =
+    // Same definition but more verbose
+    // (if (token == adminToken)
+    //    Some(adminUser)
+    //  else
+    //    None).pure[F]
+    (token == adminToken).guard[Option].as(adminUser).pure[F]
+}
+
+private final class LiveUsersAuth[F[_]: Functor](
+    redis: RedisCommands[F, String, String])
+  extends UsersAuth[F, CommonUser] {
+
+  def findUser(token: JwtToken)(claim: JwtClaim): F[Option[users.CommonUser]] =
+    redis
+      .get(token.value)
+      .map(_.flatMap { u =>
+        decode[User](u).toOption.map(CommonUser.apply)
+      })
 }
 
 object LiveUsers {
